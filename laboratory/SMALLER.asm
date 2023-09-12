@@ -40,34 +40,34 @@ main:
     move $t2, $v0
 
     # Compara si los números son iguales
-    beq $t0, $t1, igual1
-    beq $t0, $t2, igual2
-    beq $t1, $t2, igual3
-    j no_iguales
+    beq $t0, $t1, equal1
+    beq $t0, $t2, equal2
+    beq $t1, $t2, equal3
+    j no_equals
 
-igual1:
+equal1:
     # Los dos primeros números son iguales, comparar con el tercero
-    beq $t1, $t2, iguales
-    j no_iguales
+    beq $t1, $t2, equals
+    j no_equals
 
-igual2:
+equal2:
     # El primer y tercer números son iguales, comparar con el segundo
-    beq $t0, $t1, iguales
-    j no_iguales
+    beq $t0, $t1, equals
+    j no_equals
 
-igual3:
+equal3:
     # El segundo y tercer números son iguales, comparar con el primero
-    beq $t0, $t2, iguales
-    j no_iguales
+    beq $t0, $t2, equals
+    j no_equals
 
-iguales:
+equals:
     # Todos los números son iguales, mostrar el resultado
     li $v0, 4
     la $a0, all_equal_msg
     syscall
     j exit
 
-no_iguales:
+no_equals:
     # Inicializar $t3 con el primer número para comenzar la comparación
     move $t3, $t0
 
